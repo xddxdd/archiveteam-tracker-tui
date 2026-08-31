@@ -1,0 +1,22 @@
+[package]
+name = "archiveteam-tracker-tui"
+version = "0.1.0"
+edition = "2021"
+description = "TUI for monitoring ArchiveTeam tracker progress"
+
+[[bin]]
+name = "attui"
+path = "src/main.rs"
+
+[dependencies]
+ratatui = "0.29"
+crossterm = "0.28"
+tungstenite = { version = "0.26", features = ["rustls-tls-webpki-roots"] }
+ureq = { version = "2", features = ["json"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+clap = { version = "4", features = ["derive"] }
+chrono = { version = "0.4", default-features = false, features = ["clock"] }
+
+[profile.release]
+lto = true
